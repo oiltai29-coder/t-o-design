@@ -1,0 +1,1955 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>T-O-Design | บริการออกแบบและจัดทำเว็บไซต์ด้วย WordPress</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Brand Palette in harmony with tai.png Logo (Green & Golden Yellow) */
+      --brand-primary: #136F3F; /* Rich Professional Green */
+      --brand-primary-dark: #0B4A27; /* Dark Forest Green */
+      --brand-primary-light: #EAF7F0; /* Soft Pale Sage Green */
+      --brand-secondary: #E5B20D; /* Warm Golden Yellow */
+      --brand-secondary-light: #FEF9E7; /* Light Warm Yellow */
+      
+      /* Neutrals & Surfaces with soft Sage undertone */
+      --bg: #F4F7F5;
+      --surface: #ffffff;
+      --surface-alt: #ECF3EF;
+      --ink: #111A14;
+      --ink-secondary: #2C3E35;
+      --muted: #5E7368;
+      --border: #DBE4DF;
+      --border-strong: #C2CFC8;
+      --success: #136F3F;
+      
+      /* Layout & Typography Tokens */
+      --font-heading: "Century Gothic", "Poppins", "Sarabun", -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: "Angsana New", "Sarabun", "Tahoma", sans-serif;
+      --font-ui: "Sarabun", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 1px 3px rgba(17, 26, 20, 0.05), 0 1px 2px rgba(17, 26, 20, 0.03);
+      --shadow-md: 0 10px 25px -5px rgba(19, 111, 63, 0.12), 0 8px 10px -6px rgba(17, 26, 20, 0.05);
+      --shadow-lg: 0 20px 35px -10px rgba(11, 74, 39, 0.15), 0 10px 15px -5px rgba(19, 111, 63, 0.08);
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-6: 24px;
+      --space-8: 32px;
+      --space-12: 48px;
+      --space-16: 64px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-ui);
+      color: var(--ink);
+      background-color: var(--bg);
+      line-height: 1.65;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+
+    /* Sticky Top Navigation */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 74px;
+      gap: var(--space-4);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--ink);
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1.15rem;
+      box-shadow: 0 4px 12px rgba(19, 111, 63, 0.3);
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--brand-primary);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-6);
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+      color: var(--ink-secondary);
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+      padding: 6px 4px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--brand-primary);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.92rem;
+      padding: 10px 18px;
+      border-radius: 999px;
+      box-shadow: 0 4px 12px rgba(19, 111, 63, 0.25);
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(11, 74, 39, 0.25);
+    }
+
+    .nav-cta:focus-visible {
+      outline: 2px solid var(--brand-secondary);
+      outline-offset: 2px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 13px 24px;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--brand-primary);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(19, 111, 63, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--brand-primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--ink);
+      border-color: var(--border-strong);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--brand-primary);
+      color: var(--brand-primary);
+      background: var(--brand-primary-light);
+    }
+
+    .btn-accent {
+      background: var(--brand-secondary);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(229, 178, 13, 0.28);
+    }
+
+    .btn-accent:hover {
+      background: #cba00b;
+      transform: translateY(-1px);
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--brand-secondary);
+      outline-offset: 2px;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: var(--space-16) 0 var(--space-12);
+      background:
+        radial-gradient(circle at 85% 15%, rgba(19, 111, 63, 0.14) 0%, transparent 45%),
+        radial-gradient(circle at 15% 80%, rgba(229, 178, 13, 0.08) 0%, transparent 45%),
+        linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: var(--space-12);
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      background: var(--brand-primary-light);
+      color: var(--brand-primary-dark);
+      border: 1px solid rgba(19, 111, 63, 0.35);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: var(--space-4);
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 3.6vw, 2.9rem);
+      line-height: 1.25;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: var(--space-4);
+    }
+
+    .hero-title .highlight {
+      background: linear-gradient(90deg, var(--brand-primary), var(--brand-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: var(--ink-secondary);
+      margin-bottom: var(--space-6);
+      max-width: 620px;
+    }
+
+    .hero-subquote {
+      background: var(--surface);
+      border-left: 4px solid var(--brand-primary);
+      padding: var(--space-4) var(--space-6);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      box-shadow: var(--shadow-sm);
+      color: var(--ink-secondary);
+      font-size: 0.96rem;
+      margin-bottom: var(--space-8);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      align-items: center;
+    }
+
+    /* Hero Visual Preview Card */
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      padding: var(--space-6);
+      position: relative;
+    }
+
+    .hero-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: var(--space-4);
+      margin-bottom: var(--space-4);
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .doc-header-badge {
+      font-family: var(--font-heading);
+      color: var(--brand-primary);
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .window-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .window-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--border-strong);
+    }
+
+    .window-dots span:nth-child(1) { background: var(--brand-primary); }
+    .window-dots span:nth-child(2) { background: var(--brand-secondary); }
+
+    .package-mini-list {
+      display: grid;
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
+    }
+
+    .package-mini-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      transition: border-color 0.2s ease, transform 0.15s ease;
+      cursor: pointer;
+    }
+
+    .package-mini-item:hover {
+      border-color: var(--brand-primary);
+      transform: translateX(3px);
+    }
+
+    .package-mini-name {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .tier-pill {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 3px 10px;
+      border-radius: 6px;
+      background: var(--brand-primary);
+      color: #ffffff;
+      min-width: 56px;
+      text-align: center;
+    }
+
+    .tier-pill.secondary {
+      background: var(--brand-secondary);
+    }
+
+    .package-mini-price {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 1.05rem;
+    }
+
+    .hero-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--brand-primary-light);
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      color: var(--ink);
+    }
+
+    .hero-card-footer strong {
+      color: var(--brand-secondary);
+    }
+
+    /* Section Header */
+    section {
+      padding: var(--space-16) 0;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto var(--space-12);
+    }
+
+    .section-eyebrow {
+      display: inline-block;
+      font-family: var(--font-heading);
+      color: var(--brand-primary);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: var(--space-2);
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.65rem, 2.6vw, 2.25rem);
+      color: var(--ink);
+      font-weight: 700;
+      margin-bottom: var(--space-3);
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    /* Core Benefits Bar */
+    .highlights-strip {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: var(--space-8) 0;
+    }
+
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: var(--space-6);
+    }
+
+    .highlight-box {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      padding: var(--space-4);
+      border-radius: var(--radius-md);
+      background: var(--bg);
+      border: 1px solid var(--border);
+    }
+
+    .highlight-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--brand-primary-light);
+      color: var(--brand-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .highlight-box h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+      color: var(--ink);
+    }
+
+    .highlight-box p {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    /* Packages Section */
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+      gap: var(--space-6);
+      align-items: stretch;
+    }
+
+    .pkg-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      position: relative;
+    }
+
+    .pkg-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--brand-primary);
+    }
+
+    .pkg-card.featured {
+      border: 2px solid var(--brand-primary);
+      box-shadow: var(--shadow-md);
+    }
+
+    .pkg-card.selected-pkg {
+      border: 2px solid var(--brand-secondary);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .pkg-badge {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background: linear-gradient(90deg, var(--brand-primary), var(--brand-secondary));
+      color: #ffffff;
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
+      letter-spacing: 0.03em;
+    }
+
+    .pkg-name {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+
+    .pkg-type {
+      color: var(--brand-primary-dark);
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: var(--space-4);
+    }
+
+    .pkg-price-box {
+      padding: var(--space-4) 0;
+      margin-bottom: var(--space-4);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .pkg-price {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .pkg-price-unit {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .pkg-features {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin-bottom: var(--space-6);
+    }
+
+    .pkg-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.93rem;
+      color: var(--ink-secondary);
+    }
+
+    .check-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--brand-primary-light);
+      color: var(--brand-primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 3px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .pkg-features li.special-feature .check-icon {
+      background: var(--brand-secondary-light);
+      color: var(--brand-secondary);
+    }
+
+    .pkg-features li.special-feature {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    /* Comparison Table */
+    .comparison-wrap {
+      margin-top: var(--space-12);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+
+    .comparison-header {
+      padding: var(--space-4) var(--space-6);
+      background: var(--surface-alt);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .comparison-header h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .table-scroll {
+      overflow-x: auto;
+    }
+
+    table.compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 680px;
+    }
+
+    .compare-table th,
+    .compare-table td {
+      padding: 14px 18px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.93rem;
+    }
+
+    .compare-table th:first-child,
+    .compare-table td:first-child {
+      text-align: left;
+      font-weight: 600;
+      color: var(--ink);
+      width: 34%;
+    }
+
+    .compare-table thead th {
+      background: #ffffff;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--ink);
+      border-bottom: 2px solid var(--brand-primary);
+    }
+
+    .compare-table tbody tr:hover {
+      background: var(--brand-primary-light);
+    }
+
+    .yes-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #dcfce7;
+      color: var(--success);
+      font-weight: 700;
+    }
+
+    .dash-muted {
+      color: var(--muted);
+    }
+
+    /* Interactive Package Finder */
+    .finder-section {
+      background: linear-gradient(180deg, #f1f5f9 0%, #ffffff 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .finder-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: var(--space-8);
+      align-items: start;
+    }
+
+    .finder-controls {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .control-group {
+      margin-bottom: var(--space-6);
+    }
+
+    .control-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .control-label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: var(--space-3);
+      color: var(--ink);
+      font-size: 0.98rem;
+    }
+
+    .option-pills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+      gap: var(--space-2);
+    }
+
+    .opt-btn {
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-strong);
+      background: var(--surface);
+      color: var(--ink-secondary);
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s ease;
+    }
+
+    .opt-btn:hover {
+      border-color: var(--brand-primary);
+      color: var(--brand-primary);
+    }
+
+    .opt-btn.active {
+      background: var(--brand-primary);
+      border-color: var(--brand-primary);
+      color: #ffffff;
+      box-shadow: 0 3px 10px rgba(19, 111, 63, 0.28);
+    }
+
+    .finder-result {
+      background: var(--surface);
+      border: 2px solid var(--brand-primary);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-md);
+    }
+
+    .rec-tag {
+      display: inline-block;
+      background: var(--brand-secondary-light);
+      color: var(--brand-secondary);
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: var(--space-3);
+    }
+
+    .rec-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .rec-title {
+      font-family: var(--font-heading);
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .rec-price {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--brand-primary-dark);
+    }
+
+    .rec-reason {
+      background: var(--brand-primary-light);
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.92rem;
+      color: var(--ink);
+      margin-bottom: var(--space-4);
+    }
+
+    /* Portfolio Section */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: var(--space-6);
+    }
+
+    .portfolio-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--brand-primary);
+    }
+
+    .browser-bar {
+      background: var(--surface-alt);
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .browser-dots {
+      display: flex;
+      gap: 5px;
+    }
+
+    .browser-dots i {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border-strong);
+      display: inline-block;
+    }
+
+    .browser-dots i:first-child { background: var(--brand-primary); }
+
+    .browser-url {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 3px 10px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1;
+    }
+
+    .portfolio-body {
+      padding: var(--space-6);
+    }
+
+    .portfolio-domain {
+      font-family: var(--font-heading);
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: var(--space-2);
+      word-break: break-all;
+    }
+
+    .portfolio-url-text {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: var(--space-4);
+      word-break: break-all;
+    }
+
+    .portfolio-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--brand-primary-dark);
+      padding-top: var(--space-2);
+      border-top: 1px solid var(--border);
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .portfolio-card:hover .portfolio-link {
+      color: var(--brand-secondary);
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: var(--radius-lg);
+      padding: var(--space-12);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: var(--space-8);
+      align-items: center;
+    }
+
+    .contact-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.75rem, 3vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: var(--space-3);
+      color: #ffffff;
+    }
+
+    .contact-desc {
+      color: #cbd5e1;
+      font-size: 1.05rem;
+      margin-bottom: var(--space-6);
+    }
+
+    .contact-person-box {
+      background: #ffffff;
+      color: var(--ink);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .contact-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--brand-primary-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: var(--space-1);
+    }
+
+    .contact-name {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: var(--space-3);
+    }
+
+    .phone-display {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      background: var(--brand-primary-light);
+      border: 1px solid rgba(19, 111, 63, 0.4);
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      margin-bottom: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .phone-number {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--brand-secondary);
+      letter-spacing: 0.02em;
+    }
+
+    .copy-btn {
+      background: var(--surface);
+      border: 1px solid var(--border-strong);
+      color: var(--ink);
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .copy-btn:hover {
+      border-color: var(--brand-primary);
+      color: var(--brand-primary-dark);
+    }
+
+    .copy-btn.copied {
+      background: var(--success);
+      color: #ffffff;
+      border-color: var(--success);
+    }
+
+    /* Footer */
+    footer {
+      background: #0b1120;
+      color: #94a3b8;
+      padding: var(--space-8) 0;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 960px) {
+      .hero-grid,
+      .finder-grid,
+      .contact-card {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-card {
+        padding: var(--space-6);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+      }
+
+      section {
+        padding: var(--space-12) 0;
+      }
+
+      .hero {
+        padding: var(--space-8) 0;
+      }
+    }
+  </style>
+<style data-link-removed-style>a[data-link-removed],a[href*="zPythonSafez"]:not([onclick]){pointer-events:none!important;cursor:default!important;opacity:.6}</style></head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="#top" class="brand-logo" style="display: flex; align-items: center; gap: var(--space-3);">
+        <img src="data:image/png;base64,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" alt="T-O-Design" style="height: 48px; width: auto; border-radius: 8px;">
+        <div class="brand-text" style="font-family: var(--font-heading); font-weight: 700; font-size: 1.25rem;">
+          T-O-Design
+          <span style="display: block; font-size: 0.78rem; font-weight: 500; color: var(--brand-primary); letter-spacing: 0.02em;">บริการออกแบบเว็บไซต์ WordPress</span>
+        </div>
+      </a>
+      <nav aria-label="เมนูหลัก">
+        <ul class="nav-links">
+          <li><a href="#services">บริการของเรา</a></li>
+          <li><a href="#packages">แพ็กเกจราคา</a></li>
+          <li><a href="#finder">ช่วยเลือกแพ็กเกจ</a></li>
+          <li><a href="#portfolio">ผลงาน</a></li>
+          <li><a href="#contact">ติดต่อสอบถาม</a></li>
+        </ul>
+      </nav>
+      <a href="#contact" class="nav-cta">
+        <span>โทร 081-3313135 (ประเสริฐ)</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main id="top">
+    <section class="hero" id="services">
+      <div class="container hero-grid">
+        <div>
+          <div class="hero-tag">#บริการออกแบบเว็บไซต์ • สร้างเว็บไซต์ด้วย WordPress</div>
+          <h1 class="hero-title">
+            ออกแบบใหม่ตามสไตล์ที่คุณต้องการ <span class="highlight">ให้ตรงตามใจของคุณ</span>
+          </h1>
+          <p class="hero-desc">
+            บริการสร้างเว็บไซต์ออกแบบเว็บไซต์ด้วย WordPress สร้างเว็บใหม่ในราคาที่เอื้อมถึง เพียงแค่ท่านส่งข้อมูลดิบมาให้ ทางเรายินดีจัดวางและปรับให้เหมาะสม ได้อย่างลงตัว
+          </p>
+          <div class="hero-subquote">
+            ออกแบบเว็บไซต์รูปแบบใหม่ ทันสมัย ตามความต้องการของลูกค้า เพียงแค่คุณส่งข้อมูลมา เราพร้อมที่จะให้คำปรึกษา ไม่ว่าจะเป็นเว็บไซต์ ธุรกิจ บริษัท
+          </div>
+          <div class="hero-actions">
+            <a href="#packages" class="btn btn-primary">ดูแพ็กเกจราคาทั้งหมด</a>
+            <a href="#portfolio" class="btn btn-secondary">ชมตัวอย่างผลงานจริง (14 เว็บไซต์)</a>
+          </div>
+        </div>
+
+        <!-- Summary Visual Card styled after PDF header -->
+        <div class="hero-card" aria-label="สรุปแพ็กเกจบริการ">
+          <div class="hero-card-header">
+            <div class="window-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="doc-header-badge">รายละเอียด</div>
+          </div>
+          <div class="package-mini-list">
+            <a href="#pkg-onepage" class="package-mini-item">
+              <div class="package-mini-name">
+                <span class="tier-pill" style="background: var(--brand-secondary); color: var(--ink);">One-Page</span>
+                <span>หน้าเดียวครบวงจร (Landing Page)</span>
+              </div>
+              <span class="package-mini-price">฿5,000.-</span>
+            </a>
+            <a href="#pkg-begin" class="package-mini-item">
+              <div class="package-mini-name">
+                <span class="tier-pill">Begin</span>
+                <span>เว็บสำหรับเริ่มต้น (สูงสุด 4 หน้า)</span>
+              </div>
+              <span class="package-mini-price">฿10,000.-</span>
+            </a>
+            <a href="#pkg-mid" class="package-mini-item">
+              <div class="package-mini-name">
+                <span class="tier-pill">Mid</span>
+                <span>เว็บไซต์ขนาดกลาง (สูงสุด 8 หน้า • 2 ภาษา)</span>
+              </div>
+              <span class="package-mini-price">฿15,000.-</span>
+            </a>
+            <a href="#pkg-pro" class="package-mini-item">
+              <div class="package-mini-name">
+                <span class="tier-pill secondary">Pro</span>
+                <span>เว็บไซต์ขนาดใหญ่ (10-20 หน้า • หลังบ้าน)</span>
+              </div>
+              <span class="package-mini-price">฿20,000.-</span>
+            </a>
+            <a href="#pkg-biz" class="package-mini-item">
+              <div class="package-mini-name">
+                <span class="tier-pill secondary">Biz</span>
+                <span>เว็บไซต์ธุรกิจ (10-30 หน้า • ตะกร้า + Login)</span>
+              </div>
+              <span class="package-mini-price">฿25,000.-</span>
+            </a>
+          </div>
+          <div class="hero-card-footer">
+            <span>ทุกแพ็กเกจรวมโดเมน + เช่าโฮสติ้ง 1 ปี และ SSL</span>
+            <strong>พร้อมใช้งาน</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Value Strip -->
+    <div class="highlights-strip">
+      <div class="container highlights-grid">
+        <div class="highlight-box">
+          <div class="highlight-icon">✓</div>
+          <div>
+            <h3>ออกแบบตามคอนเซ็ปต์ลูกค้า</h3>
+            <p>ส่งเพียงข้อมูลดิบมาให้ เราจัดวางและปรับแต่งให้สวยงามลงตัว</p>
+          </div>
+        </div>
+        <div class="highlight-box">
+          <div class="highlight-icon">🔒</div>
+          <div>
+            <h3>SEO เบื้องต้น & กุญแจ SSL</h3>
+            <p>จัดทำระบบ SEO ให้เบื้องต้น พร้อมติดตั้งกุญแจ SSL ลงในเว็บไซต์ทุกแพ็กเกจ</p>
+          </div>
+        </div>
+        <div class="highlight-box">
+          <div class="highlight-icon">🌐</div>
+          <div>
+            <h3>รวมโดเมนและโฮสติ้ง 1 ปี</h3>
+            <p>รวมค่าจดโดเมนและเช่าโฮสติ้ง เป็นระยะเวลา 1 ปี ลงข้อมูลครบถ้วนพร้อมใช้งาน</p>
+          </div>
+        </div>
+        <div class="highlight-box">
+          <div class="highlight-icon">🤝</div>
+          <div>
+            <h3>ดูแลและให้คำปรึกษา</h3>
+            <p>ให้คำปรึกษาและบริการหลังการขาย สำหรับเว็บไซต์ธุรกิจและบริษัท</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pricing Packages Section -->
+    <section id="packages">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Packages & Pricing</span>
+          <h2 class="section-title">แพ็กเกจบริการออกแบบเว็บไซต์</h2>
+          <p class="section-subtitle">
+            เลือกแพ็กเกจที่เหมาะกับขนาดเว็บไซต์และฟีเจอร์ธุรกิจของคุณ ราคาชัดเจนครบจบพร้อมใช้งาน
+          </p>
+        </div>
+
+        <div class="packages-grid">
+          <!-- One-Page -->
+          <article class="pkg-card" id="pkg-onepage" data-tier="OnePage">
+            <div>
+              <div class="pkg-name">One-Page</div>
+              <div class="pkg-type">เว็บหน้าเดียวปิดการขาย</div>
+              <div class="pkg-price-box">
+                <span class="pkg-price">฿5,000.-</span>
+              </div>
+              <ul class="pkg-features">
+                <li><span class="check-icon">✓</span>ออกแบบเว็บไซต์ใหม่ตามคอนเซ็ปต์ของลูกค้า</li>
+                <li><span class="check-icon">✓</span>ลงข้อมูลครบถ้วนพร้อมใช้งานในหน้าเดียว</li>
+                <li class="special-feature"><span class="check-icon">✓</span>เว็บหน้าเดียว (Single Page / Landing Page)</li>
+                <li><span class="check-icon">✓</span>จัดทำระบบ SEO ให้เบื้องต้น</li>
+                <li><span class="check-icon">✓</span>ติดตั้งกุญแจ SSL ลงในเว็บไซต์</li>
+                <li><span class="check-icon">✓</span>ให้คำปรึกษาและบริการหลังการขาย</li>
+                <li><span class="check-icon">✓</span>รวมค่าจดโดเมน (เฉพาะ .com) เช่าโฮสติ้ง เป็นระยะเวลา 1 ปี</li>
+              </ul>
+            </div>
+            <a href="#contact" class="btn btn-secondary" onclick="selectTier('OnePage')">สนใจแพ็กเกจ One-Page</a>
+          </article>
+
+          <!-- Begin -->
+          <article class="pkg-card" id="pkg-begin" data-tier="Begin">
+            <div>
+              <div class="pkg-name">Begin</div>
+              <div class="pkg-type">เว็บสำหรับเริ่มต้น</div>
+              <div class="pkg-price-box">
+                <span class="pkg-price">฿10,000.-</span>
+              </div>
+              <ul class="pkg-features">
+                <li><span class="check-icon">✓</span>ออกแบบเว็บไซต์ใหม่ตามคอนเซ็ปต์ของลูกค้า</li>
+                <li><span class="check-icon">✓</span>ลงข้อมูลครบถ้วนพร้อมใช้งาน</li>
+                <li class="special-feature"><span class="check-icon">✓</span>ออกแบบหน้าเว็บไซต์ สูงสุด 4 หน้า</li>
+                <li><span class="check-icon">✓</span>จัดทำระบบ SEO ให้เบื้องต้น</li>
+                <li><span class="check-icon">✓</span>ติดตั้งกุญแจ SSL ลงในเว็บไซต์</li>
+                <li><span class="check-icon">✓</span>ให้คำปรึกษาและบริการหลังการขาย</li>
+                <li><span class="check-icon">✓</span>รวมค่าจดโดเมน (เฉพาะ .com) เช่าโฮสติ้ง เป็นระยะเวลา 1 ปี</li>
+              </ul>
+            </div>
+            <a href="#contact" class="btn btn-secondary" onclick="selectTier('Begin')">สนใจแพ็กเกจ Begin</a>
+          </article>
+
+          <!-- Mid -->
+          <article class="pkg-card" id="pkg-mid" data-tier="Mid">
+            <div>
+              <div class="pkg-name">Mid</div>
+              <div class="pkg-type">เว็บไซต์ขนาดกลาง</div>
+              <div class="pkg-price-box">
+                <span class="pkg-price">฿15,000.-</span>
+              </div>
+              <ul class="pkg-features">
+                <li><span class="check-icon">✓</span>ออกแบบเว็บไซต์ใหม่ตามคอนเซ็ปต์ของลูกค้า</li>
+                <li><span class="check-icon">✓</span>ลงข้อมูลครบถ้วนพร้อมใช้งาน</li>
+                <li class="special-feature"><span class="check-icon">✓</span>ออกแบบหน้าเว็บไซต์ สูงสุด 8 หน้า</li>
+                <li class="special-feature"><span class="check-icon">✓</span>เว็บไซต์ 2 ภาษา</li>
+                <li><span class="check-icon">✓</span>จัดทำระบบ SEO ให้เบื้องต้น</li>
+                <li><span class="check-icon">✓</span>ติดตั้งกุญแจ SSL ลงในเว็บไซต์</li>
+                <li><span class="check-icon">✓</span>ให้คำปรึกษาและบริการหลังการขาย</li>
+                <li><span class="check-icon">✓</span>รวมค่าจดโดเมน (เฉพาะ .com) เช่าโฮสติ้ง เป็นระยะเวลา 1 ปี</li>
+              </ul>
+            </div>
+            <a href="#contact" class="btn btn-secondary" onclick="selectTier('Mid')">สนใจแพ็กเกจ Mid</a>
+          </article>
+
+          <!-- Pro -->
+          <article class="pkg-card featured" id="pkg-pro" data-tier="Pro">
+            <span class="pkg-badge">เว็บไซต์ขนาดใหญ่</span>
+            <div>
+              <div class="pkg-name">Pro</div>
+              <div class="pkg-type">เว็บไซต์ขนาดใหญ่</div>
+              <div class="pkg-price-box">
+                <span class="pkg-price">฿20,000.-</span>
+              </div>
+              <ul class="pkg-features">
+                <li><span class="check-icon">✓</span>ออกแบบเว็บไซต์ใหม่ตามคอนเซ็ปต์ของลูกค้า</li>
+                <li><span class="check-icon">✓</span>ลงข้อมูลครบถ้วนพร้อมใช้งาน</li>
+                <li class="special-feature"><span class="check-icon">✓</span>ออกแบบหน้าเว็บไซต์ 10-20 หน้า</li>
+                <li class="special-feature"><span class="check-icon">✓</span>เว็บไซต์ 2 ภาษา</li>
+                <li><span class="check-icon">✓</span>จัดทำระบบ SEO ให้เบื้องต้น</li>
+                <li><span class="check-icon">✓</span>ติดตั้งกุญแจ SSL ลงในเว็บไซต์</li>
+                <li class="special-feature"><span class="check-icon">✓</span>มีระบบหลังบ้าน</li>
+                <li><span class="check-icon">✓</span>ให้คำปรึกษาและบริการหลังการขาย</li>
+                <li><span class="check-icon">✓</span>รวมค่าจดโดเมน เช่าโฮสติ้ง เป็นระยะเวลา 1 ปี</li>
+              </ul>
+            </div>
+            <a href="#contact" class="btn btn-primary" onclick="selectTier('Pro')">สนใจแพ็กเกจ Pro</a>
+          </article>
+
+          <!-- Biz -->
+          <article class="pkg-card" id="pkg-biz" data-tier="Biz">
+            <span class="pkg-badge">ครบทุกฟังก์ชันธุรกิจ</span>
+            <div>
+              <div class="pkg-name">Biz</div>
+              <div class="pkg-type">เว็บไซต์ธุรกิจ</div>
+              <div class="pkg-price-box">
+                <span class="pkg-price">฿25,000.-</span>
+              </div>
+              <ul class="pkg-features">
+                <li><span class="check-icon">✓</span>ออกแบบเว็บไซต์ใหม่ตามคอนเซ็ปต์ของลูกค้า</li>
+                <li><span class="check-icon">✓</span>ลงข้อมูลครบถ้วนพร้อมใช้งาน</li>
+                <li class="special-feature"><span class="check-icon">✓</span>ออกแบบหน้าเว็บไซต์ 10-30 หน้า</li>
+                <li class="special-feature"><span class="check-icon">✓</span>เว็บไซต์ 2 ภาษา</li>
+                <li class="special-feature"><span class="check-icon">✓</span>ระบบตะกร้าใส่สินค้า</li>
+                <li class="special-feature"><span class="check-icon">✓</span>มีระบบ login</li>
+                <li><span class="check-icon">✓</span>จัดทำระบบ SEO ให้เบื้องต้น</li>
+                <li><span class="check-icon">✓</span>ติดตั้งกุญแจ SSL ลงในเว็บไซต์</li>
+                <li class="special-feature"><span class="check-icon">✓</span>มีระบบหลังบ้าน</li>
+                <li><span class="check-icon">✓</span>ให้คำปรึกษาและบริการหลังการขาย</li>
+                <li><span class="check-icon">✓</span>รวมค่าจดโดเมน เช่าโฮสติ้ง เป็นระยะเวลา 1 ปี</li>
+              </ul>
+            </div>
+            <a href="#contact" class="btn btn-accent" onclick="selectTier('Biz')">สนใจแพ็กเกจ Biz</a>
+          </article>
+        </div>
+
+        <!-- Full Feature Comparison Table -->
+        <div class="comparison-wrap">
+          <div class="comparison-header">
+            <h3>ตารางเปรียบเทียบรายละเอียดทั้ง 4 แพ็กเกจ</h3>
+            <span style="font-size: 0.88rem; color: var(--muted);">ข้อมูลอ้างอิงตามเอกสารรายละเอียดบริการ</span>
+          </div>
+          <div class="table-scroll">
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th>รายการรายละเอียด</th>
+                  <th>One-Page (฿5,000.-)</th>
+                  <th>Begin (฿10,000.-)</th>
+                  <th>Mid (฿15,000.-)</th>
+                  <th>Pro (฿20,000.-)</th>
+                  <th>Biz (฿25,000.-)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ประเภทเว็บไซต์</td>
+                  <td>เว็บหน้าเดียวปิดการขาย</td>
+                  <td>เว็บสำหรับเริ่มต้น</td>
+                  <td>เว็บไซต์ขนาดกลาง</td>
+                  <td>เว็บไซต์ขนาดใหญ่</td>
+                  <td>เว็บไซต์ธุรกิจ</td>
+                </tr>
+                <tr>
+                  <td>จำนวนหน้าเว็บไซต์</td>
+                  <td>หน้าเดียว (Landing Page)</td>
+                  <td>สูงสุด 4 หน้า</td>
+                  <td>สูงสุด 8 หน้า</td>
+                  <td>10-20 หน้า</td>
+                  <td>10-30 หน้า</td>
+                </tr>
+                <tr>
+                  <td>ออกแบบใหม่ตามคอนเซ็ปต์ & ลงข้อมูลพร้อมใช้งาน</td>
+                  <td><span class="yes-badge">✓</span></td>
+                  <td><span class="yes-badge">✓</span></td>
+                  <td><span class="yes-badge">✓</span></td>
+                  <td><span class="yes-badge">✓</span></td>
+                  <td><span class="yes-badge">✓</span></td>
+                </tr>
+                <tr>
+                  <td>เว็บไซต์ 2 ภาษา</td>
+                  <td><span class="dash-muted">—</span></td>
+                  <td><span class="dash-muted">—</span></td>
+                  <td><span class="yes-badge">✓</span></td>
+                  <td><span class="yes-badge">✓</span></td>
+                  <td><span class="yes-badge">✓</span></td>
+                </tr>
+                <tr>
+                  <td>มีระบบหลังบ้าน</td>
+                  <td><span class="dash-muted">—</span></td>
+                  <td><span class="dash-muted">—</span></td>
+                  <td><span class="dash-muted">—</span></td>
+                  <td><span class="yes-badge">✓</span></td>
+                  <td><span class="yes-badge">✓</span></td>
+                </tr>
+                <tr>
+                  <td>ระบบตะกร้าใส่สินค้า & ระบบ login</td>
+                  <td><span class="dash-muted">—</span></td>
+                  <td><span class="dash-muted">—</span></td>
+                  <td><span class="dash-muted">—</span></td>
+                  <td><span class="dash-muted">—</span></td>
+                  <td><span class="yes-badge">✓</span></td>
+                </tr>
+                <tr>
+                  <td>จัดทำระบบ SEO เบื้องต้น & ติดตั้งกุญแจ SSL</td>
+                  <td><span class="yes-badge">✓</span></td>
+                  <td><span class="yes-badge">✓</span></td>
+                  <td><span class="yes-badge">✓</span></td>
+                  <td><span class="yes-badge">✓</span></td>
+                  <td><span class="yes-badge">✓</span></td>
+                </tr>
+                <tr>
+                  <td>ให้คำปรึกษาและบริการหลังการขาย</td>
+                  <td><span class="yes-badge">✓</span></td>
+                  <td><span class="yes-badge">✓</span></td>
+                  <td><span class="yes-badge">✓</span></td>
+                  <td><span class="yes-badge">✓</span></td>
+                  <td><span class="yes-badge">✓</span></td>
+                </tr>
+                <tr>
+                  <td>รวมค่าจดโดเมน + เช่าโฮสติ้ง 1 ปี</td>
+                  <td>เฉพาะ .com</td>
+                  <td>เฉพาะ .com</td>
+                  <td>เฉพาะ .com</td>
+                  <td>รวมโดเมน + โฮสติ้ง 1 ปี</td>
+                  <td>รวมโดเมน + โฮสติ้ง 1 ปี</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Package Recommender -->
+    <section id="finder" class="finder-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Package Finder</span>
+          <h2 class="section-title">ค้นหาแพ็กเกจที่เหมาะกับเว็บไซต์ของคุณ</h2>
+          <p class="section-subtitle">
+            เลือกความต้องการเบื้องต้นของคุณเพื่อดูแพ็กเกจและงบประมาณที่เหมาะสม
+          </p>
+        </div>
+
+        <div class="finder-grid">
+          <div class="finder-controls">
+            <div class="control-group">
+              <label class="control-label">1. จำนวนหน้าเว็บไซต์ที่ต้องการประมาณกี่หน้า?</label>
+              <div class="option-pills" id="pages-options">
+                <button type="button" class="opt-btn" data-pages="1">หน้าเดียว (Landing Page)</button>
+                <button type="button" class="opt-btn active" data-pages="4">สูงสุด 4 หน้า</button>
+                <button type="button" class="opt-btn" data-pages="8">สูงสุด 8 หน้า</button>
+                <button type="button" class="opt-btn" data-pages="20">10-20 หน้า</button>
+                <button type="button" class="opt-btn" data-pages="30">10-30 หน้า</button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">2. ต้องการเว็บไซต์ 2 ภาษาหรือไม่?</label>
+              <div class="option-pills" id="lang-options">
+                <button type="button" class="opt-btn active" data-lang="1">ภาษาเดียว</button>
+                <button type="button" class="opt-btn" data-lang="2">ต้องการ 2 ภาษา</button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">3. ระบบจัดการและฟีเจอร์เพิ่มเติมที่ต้องการ</label>
+              <div class="option-pills" id="sys-options">
+                <button type="button" class="opt-btn active" data-sys="basic">เว็บไซต์แสดงข้อมูลทั่วไป</button>
+                <button type="button" class="opt-btn" data-sys="backend">มีระบบหลังบ้าน</button>
+                <button type="button" class="opt-btn" data-sys="ecommerce">มีตะกร้าสินค้า + ระบบ Login</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="finder-result" aria-live="polite">
+            <span class="rec-tag">แพ็กเกจที่แนะนำสำหรับคุณ</span>
+            <div class="rec-header">
+              <div>
+                <div class="rec-title" id="rec-name">Begin — เว็บสำหรับเริ่มต้น</div>
+              </div>
+              <div class="rec-price" id="rec-price">฿10,000.-</div>
+            </div>
+            <div class="rec-reason" id="rec-reason">
+              เหมาะสำหรับธุรกิจเริ่มต้นที่ต้องการเว็บไซต์ไม่เกิน 4 หน้า พร้อมลงข้อมูลครบถ้วน ระบบ SEO เบื้องต้น, SSL และโดเมน (.com) พร้อมโฮสติ้ง 1 ปี
+            </div>
+            <ul class="pkg-features" id="rec-features">
+              <li><span class="check-icon">✓</span>ออกแบบเว็บไซต์ใหม่ตามคอนเซ็ปต์ของลูกค้า</li>
+              <li><span class="check-icon">✓</span>ลงข้อมูลครบถ้วนพร้อมใช้งาน</li>
+              <li><span class="check-icon">✓</span>ออกแบบหน้าเว็บไซต์ สูงสุด 4 หน้า</li>
+              <li><span class="check-icon">✓</span>จัดทำระบบ SEO ให้เบื้องต้น & ติดตั้งกุญแจ SSL</li>
+              <li><span class="check-icon">✓</span>รวมค่าจดโดเมน (เฉพาะ .com) เช่าโฮสติ้ง 1 ปี</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary" style="width: 100%;">ติดต่อสอบถามแพ็กเกจนี้ (081-3313135)</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Our Portfolio</span>
+          <h2 class="section-title">ผลงานการออกแบบเว็บไซต์</h2>
+          <p class="section-subtitle">
+            ตัวอย่างผลงานเว็บไซต์ลูกค้าจริงที่เราได้รับความไว้วางใจให้ออกแบบและพัฒนา
+          </p>
+        </div>
+
+        <div class="portfolio-grid">
+          <!-- 1. anantachai.com -->
+          <article class="portfolio-card">
+            <div>
+              <div class="browser-bar">
+                <div class="browser-dots"><i></i><i></i><i></i></div>
+                <div class="browser-url">anantachai.com</div>
+              </div>
+              <div class="portfolio-body">
+                <h3 class="portfolio-domain">anantachai.com</h3>
+                <p class="portfolio-url-text">https://anantachai.com/</p>
+                <a href="https://anantachai.com/" target="_blank" rel="noopener" class="portfolio-link">
+                  <span>เข้าชมเว็บไซต์จริง</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. jcsolarcell.com -->
+          <article class="portfolio-card">
+            <div>
+              <div class="browser-bar">
+                <div class="browser-dots"><i></i><i></i><i></i></div>
+                <div class="browser-url">www.jcsolarcell.com</div>
+              </div>
+              <div class="portfolio-body">
+                <h3 class="portfolio-domain">jcsolarcell.com</h3>
+                <p class="portfolio-url-text">https://www.jcsolarcell.com</p>
+                <a href="https://www.jcsolarcell.com" target="_blank" rel="noopener" class="portfolio-link">
+                  <span>เข้าชมเว็บไซต์จริง</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. stonehousethailand.com -->
+          <article class="portfolio-card">
+            <div>
+              <div class="browser-bar">
+                <div class="browser-dots"><i></i><i></i><i></i></div>
+                <div class="browser-url">stonehousethailand.com</div>
+              </div>
+              <div class="portfolio-body">
+                <h3 class="portfolio-domain">stonehousethailand.com</h3>
+                <p class="portfolio-url-text">https://stonehousethailand.com/</p>
+                <a href="https://stonehousethailand.com/" target="_blank" rel="noopener" class="portfolio-link">
+                  <span>เข้าชมเว็บไซต์จริง</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4. poogunpurigardenhome.com -->
+          <article class="portfolio-card">
+            <div>
+              <div class="browser-bar">
+                <div class="browser-dots"><i></i><i></i><i></i></div>
+                <div class="browser-url">www.poogunpurigardenhome.com</div>
+              </div>
+              <div class="portfolio-body">
+                <h3 class="portfolio-domain">poogunpurigardenhome.com</h3>
+                <p class="portfolio-url-text">https://www.poogunpurigardenhome.com</p>
+                <a href="https://www.poogunpurigardenhome.com" target="_blank" rel="noopener" class="portfolio-link">
+                  <span>เข้าชมเว็บไซต์จริง</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5. tte-advance.com -->
+          <article class="portfolio-card">
+            <div>
+              <div class="browser-bar">
+                <div class="browser-dots"><i></i><i></i><i></i></div>
+                <div class="browser-url">tte-advance.com</div>
+              </div>
+              <div class="portfolio-body">
+                <h3 class="portfolio-domain">tte-advance.com</h3>
+                <p class="portfolio-url-text">https://tte-advance.com/</p>
+                <a href="https://tte-advance.com/" target="_blank" rel="noopener" class="portfolio-link">
+                  <span>เข้าชมเว็บไซต์จริง</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6. cnpengineering.com -->
+          <article class="portfolio-card">
+            <div>
+              <div class="browser-bar">
+                <div class="browser-dots"><i></i><i></i><i></i></div>
+                <div class="browser-url">www.cnpengineering.com</div>
+              </div>
+              <div class="portfolio-body">
+                <h3 class="portfolio-domain">cnpengineering.com</h3>
+                <p class="portfolio-url-text">https://www.cnpengineering.com</p>
+                <a href="https://www.cnpengineering.com" target="_blank" rel="noopener" class="portfolio-link">
+                  <span>เข้าชมเว็บไซต์จริง</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 7. amlalandscape.com -->
+          <article class="portfolio-card">
+            <div>
+              <div class="browser-bar">
+                <div class="browser-dots"><i></i><i></i><i></i></div>
+                <div class="browser-url">amlalandscape.com</div>
+              </div>
+              <div class="portfolio-body">
+                <h3 class="portfolio-domain">amlalandscape.com</h3>
+                <p class="portfolio-url-text">https://amlalandscape.com/</p>
+                <a href="https://amlalandscape.com/" target="_blank" rel="noopener" class="portfolio-link">
+                  <span>เข้าชมเว็บไซต์จริง</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 8. kritsadagarden.com -->
+          <article class="portfolio-card">
+            <div>
+              <div class="browser-bar">
+                <div class="browser-dots"><i></i><i></i><i></i></div>
+                <div class="browser-url">www.kritsadagarden.com</div>
+              </div>
+              <div class="portfolio-body">
+                <h3 class="portfolio-domain">kritsadagarden.com</h3>
+                <p class="portfolio-url-text">https://www.kritsadagarden.com</p>
+                <a href="https://www.kritsadagarden.com" target="_blank" rel="noopener" class="portfolio-link">
+                  <span>เข้าชมเว็บไซต์จริง</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 9. smc-ss.com -->
+          <article class="portfolio-card">
+            <div>
+              <div class="browser-bar">
+                <div class="browser-dots"><i></i><i></i><i></i></div>
+                <div class="browser-url">smc-ss.com</div>
+              </div>
+              <div class="portfolio-body">
+                <h3 class="portfolio-domain">smc-ss.com</h3>
+                <p class="portfolio-url-text">https://smc-ss.com/</p>
+                <a href="https://smc-ss.com/" target="_blank" rel="noopener" class="portfolio-link">
+                  <span>เข้าชมเว็บไซต์จริง</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 10. hachiengineeringandsupply.co.th -->
+          <article class="portfolio-card">
+            <div>
+              <div class="browser-bar">
+                <div class="browser-dots"><i></i><i></i><i></i></div>
+                <div class="browser-url">www.hachiengineeringandsupply.co.th</div>
+              </div>
+              <div class="portfolio-body">
+                <h3 class="portfolio-domain">hachiengineeringandsupply.co.th</h3>
+                <p class="portfolio-url-text">https://www.hachiengineeringandsupply.co.th</p>
+                <a href="https://www.hachiengineeringandsupply.co.th" target="_blank" rel="noopener" class="portfolio-link">
+                  <span>เข้าชมเว็บไซต์จริง</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 11. a-a-automation.com -->
+          <article class="portfolio-card">
+            <div>
+              <div class="browser-bar">
+                <div class="browser-dots"><i></i><i></i><i></i></div>
+                <div class="browser-url">a-a-automation.com</div>
+              </div>
+              <div class="portfolio-body">
+                <h3 class="portfolio-domain">a-a-automation.com</h3>
+                <p class="portfolio-url-text">https://a-a-automation.com/</p>
+                <a href="https://a-a-automation.com/" target="_blank" rel="noopener" class="portfolio-link">
+                  <span>เข้าชมเว็บไซต์จริง</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 12. bugelframeworks.com -->
+          <article class="portfolio-card">
+            <div>
+              <div class="browser-bar">
+                <div class="browser-dots"><i></i><i></i><i></i></div>
+                <div class="browser-url">www.bugelframeworks.com</div>
+              </div>
+              <div class="portfolio-body">
+                <h3 class="portfolio-domain">bugelframeworks.com</h3>
+                <p class="portfolio-url-text">https://www.bugelframeworks.com</p>
+                <a href="https://www.bugelframeworks.com" target="_blank" rel="noopener" class="portfolio-link">
+                  <span>เข้าชมเว็บไซต์จริง</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 13. ice-thai.com -->
+          <article class="portfolio-card">
+            <div>
+              <div class="browser-bar">
+                <div class="browser-dots"><i></i><i></i><i></i></div>
+                <div class="browser-url">ice-thai.com</div>
+              </div>
+              <div class="portfolio-body">
+                <h3 class="portfolio-domain">ice-thai.com</h3>
+                <p class="portfolio-url-text">https://ice-thai.com/</p>
+                <a href="https://ice-thai.com/" target="_blank" rel="noopener" class="portfolio-link">
+                  <span>เข้าชมเว็บไซต์จริง</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 14. aipstudio2023.com -->
+          <article class="portfolio-card">
+            <div>
+              <div class="browser-bar">
+                <div class="browser-dots"><i></i><i></i><i></i></div>
+                <div class="browser-url">www.aipstudio2023.com</div>
+              </div>
+              <div class="portfolio-body">
+                <h3 class="portfolio-domain">aipstudio2023.com</h3>
+                <p class="portfolio-url-text">https://www.aipstudio2023.com</p>
+                <a href="https://www.aipstudio2023.com" target="_blank" rel="noopener" class="portfolio-link">
+                  <span>เข้าชมเว็บไซต์จริง</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <div class="contact-card">
+          <div>
+            <span class="hero-tag" style="background: rgba(19, 111, 63, 0.2); color: #86efac; border-color: rgba(19, 111, 63, 0.4);">
+              พร้อมให้คำปรึกษาและเริ่มต้นสร้างเว็บไซต์
+            </span>
+            <h2 class="contact-title">โทรสอบถามเพิ่มเติม</h2>
+            <p class="contact-desc">
+              เพียงแค่คุณส่งข้อมูลดิบมาให้ เราพร้อมที่จะให้คำปรึกษา จัดวาง และออกแบบเว็บไซต์รูปแบบใหม่ที่ทันสมัย ไม่ว่าจะเป็นเว็บไซต์ธุรกิจ หรือบริษัทของคุณ
+            </p>
+            <div id="selected-tier-banner" style="display: none; background: rgba(19, 111, 63, 0.12); border-left: 4px solid var(--brand-primary); padding: 12px 16px; border-radius: 6px; margin-bottom: 16px; color: #e2f0e9;">
+              แพ็กเกจที่คุณกำลังสนใจ: <strong id="selected-tier-text">Pro</strong>
+            </div>
+          </div>
+
+          <div class="contact-person-box">
+            <div class="contact-label">ผู้ดูแลและให้คำปรึกษา</div>
+            <div class="contact-name">คุณประเสริฐ</div>
+            <div class="phone-display">
+              <span class="phone-number" id="phone-val">081-3313135</span>
+              <button type="button" class="copy-btn" id="copy-phone-btn" onclick="copyPhone()">คัดลอกเบอร์โทร</button>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--muted);">
+              ติดต่อสอบถามรายละเอียดแพ็กเกจ Begin, Mid, Pro และ Biz หรือปรึกษาแนวทางการออกแบบเว็บไซต์ธุรกิจด้วย WordPress
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© บริการออกแบบและจัดทำเว็บไซต์ด้วย WordPress • โทรสอบถามเพิ่มเติม 081-3313135 (ประเสริฐ)</div>
+      <div>#บริการออกแบบเว็บไซต์</div>
+    </div>
+  </footer>
+
+  <script>
+    const PACKAGES = {
+      OnePage: {
+        title: "One-Page — เว็บหน้าเดียวปิดการขาย",
+        price: "฿5,000.-",
+        reason: "เหมาะสำหรับหน้าปิดการขายเดี่ยว (Landing Page) ที่ต้องการนำเสนอข้อมูลครบจบในหน้าเดียว พร้อมระบบ SEO เบื้องต้น, กุญแจ SSL และโดเมน (.com) เช่าโฮสติ้ง 1 ปี",
+        features: [
+          "ออกแบบเว็บไซต์ใหม่ตามคอนเซ็ปต์ของลูกค้า",
+          "ลงข้อมูลครบถ้วนพร้อมใช้งานในหน้าเดียว",
+          "เว็บหน้าเดียว (Single Page / Landing Page)",
+          "จัดทำระบบ SEO ให้เบื้องต้น & ติดตั้งกุญแจ SSL",
+          "ให้คำปรึกษาและบริการหลังการขาย",
+          "รวมค่าจดโดเมน (เฉพาะ .com) เช่าโฮสติ้ง เป็นระยะเวลา 1 ปี"
+        ]
+      },
+      Begin: {
+        title: "Begin — เว็บสำหรับเริ่มต้น",
+        price: "฿10,000.-",
+        reason: "เหมาะสำหรับผู้เริ่มต้นทำเว็บไซต์ (สูงสุด 4 หน้า) พร้อมลงข้อมูลครบถ้วน ระบบ SEO เบื้องต้น, กุญแจ SSL และโดเมน (.com) พร้อมโฮสติ้ง 1 ปี",
+        features: [
+          "ออกแบบเว็บไซต์ใหม่ตามคอนเซ็ปต์ของลูกค้า",
+          "ลงข้อมูลครบถ้วนพร้อมใช้งาน",
+          "ออกแบบหน้าเว็บไซต์ สูงสุด 4 หน้า",
+          "จัดทำระบบ SEO ให้เบื้องต้น & ติดตั้งกุญแจ SSL",
+          "ให้คำปรึกษาและบริการหลังการขาย",
+          "รวมค่าจดโดเมน (เฉพาะ .com) เช่าโฮสติ้ง เป็นระยะเวลา 1 ปี"
+        ]
+      },
+      Mid: {
+        title: "Mid — เว็บไซต์ขนาดกลาง",
+        price: "฿15,000.-",
+        reason: "เหมาะสำหรับธุรกิจที่ต้องการเว็บไซต์ขนาดกลาง (สูงสุด 8 หน้า) และรองรับเว็บไซต์ 2 ภาษา พร้อม SEO เบื้องต้น, SSL และโดเมน (.com) เช่าโฮสติ้ง 1 ปี",
+        features: [
+          "ออกแบบเว็บไซต์ใหม่ตามคอนเซ็ปต์ของลูกค้า",
+          "ลงข้อมูลครบถ้วนพร้อมใช้งาน",
+          "ออกแบบหน้าเว็บไซต์ สูงสุด 8 หน้า",
+          "เว็บไซต์ 2 ภาษา",
+          "จัดทำระบบ SEO ให้เบื้องต้น & ติดตั้งกุญแจ SSL",
+          "ให้คำปรึกษาและบริการหลังการขาย",
+          "รวมค่าจดโดเมน (เฉพาะ .com) เช่าโฮสติ้ง เป็นระยะเวลา 1 ปี"
+        ]
+      },
+      Pro: {
+        title: "Pro — เว็บไซต์ขนาดใหญ่",
+        price: "฿20,000.-",
+        reason: "เหมาะสำหรับองค์กรที่ต้องการเว็บไซต์ขนาดใหญ่ (10-20 หน้า) รองรับ 2 ภาษา และมีระบบหลังบ้านสำหรับจัดการข้อมูล",
+        features: [
+          "ออกแบบเว็บไซต์ใหม่ตามคอนเซ็ปต์ของลูกค้า & ลงข้อมูลครบถ้วน",
+          "ออกแบบหน้าเว็บไซต์ 10-20 หน้า",
+          "เว็บไซต์ 2 ภาษา",
+          "มีระบบหลังบ้าน",
+          "จัดทำระบบ SEO ให้เบื้องต้น & ติดตั้งกุญแจ SSL",
+          "ให้คำปรึกษาและบริการหลังการขาย",
+          "รวมค่าจดโดเมน เช่าโฮสติ้ง เป็นระยะเวลา 1 ปี"
+        ]
+      },
+      Biz: {
+        title: "Biz — เว็บไซต์ธุรกิจ",
+        price: "฿25,000.-",
+        reason: "ครบเครื่องที่สุดสำหรับเว็บไซต์ธุรกิจขนาด 10-30 หน้า รองรับ 2 ภาษา พร้อมระบบตะกร้าใส่สินค้า, ระบบ login และระบบหลังบ้านครบวงจร",
+        features: [
+          "ออกแบบเว็บไซต์ใหม่ตามคอนเซ็ปต์ของลูกค้า & ลงข้อมูลครบถ้วน",
+          "ออกแบบหน้าเว็บไซต์ 10-30 หน้า (เว็บไซต์ 2 ภาษา)",
+          "ระบบตะกร้าใส่สินค้า & มีระบบ login",
+          "มีระบบหลังบ้าน",
+          "จัดทำระบบ SEO ให้เบื้องต้น & ติดตั้งกุญแจ SSL",
+          "ให้คำปรึกษาและบริการหลังการขาย",
+          "รวมค่าจดโดเมน เช่าโฮสติ้ง เป็นระยะเวลา 1 ปี"
+        ]
+      }
+    };
+
+    const state = {
+      pages: 4,
+      lang: 1,
+      sys: "basic"
+    };
+
+    function evaluateRecommendation() {
+      let tier = "Begin";
+
+      if (state.sys === "ecommerce" || state.pages === 30) {
+        tier = "Biz";
+      } else if (state.sys === "backend" || state.pages === 20) {
+        tier = "Pro";
+      } else if (state.lang === 2 || state.pages === 8) {
+        tier = "Mid";
+      } else if (state.pages === 1) {
+        tier = "OnePage";
+      } else {
+        tier = "Begin";
+      }
+
+      const data = PACKAGES[tier];
+      document.getElementById("rec-name").textContent = data.title;
+      document.getElementById("rec-price").textContent = data.price;
+      document.getElementById("rec-reason").textContent = data.reason;
+
+      const listEl = document.getElementById("rec-features");
+      listEl.innerHTML = data.features
+        .map(item => `<li><span class="check-icon">✓</span>${item}</li>`)
+        .join("");
+    }
+
+    function bindGroup(containerId, key, parseFn) {
+      const container = document.getElementById(containerId);
+      const buttons = container.querySelectorAll(".opt-btn");
+      buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          buttons.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          state[key] = parseFn(btn.dataset[key]);
+          evaluateRecommendation();
+        });
+      });
+    }
+
+    bindGroup("pages-options", "pages", Number);
+    bindGroup("lang-options", "lang", Number);
+    bindGroup("sys-options", "sys", String);
+
+    function selectTier(tierName) {
+      document.querySelectorAll(".pkg-card").forEach(card => {
+        card.classList.toggle("selected-pkg", card.dataset.tier === tierName);
+      });
+      const banner = document.getElementById("selected-tier-banner");
+      const text = document.getElementById("selected-tier-text");
+      if (banner && text && PACKAGES[tierName]) {
+        banner.style.display = "block";
+        text.textContent = PACKAGES[tierName].title + " (" + PACKAGES[tierName].price + ")";
+      }
+    }
+
+    function copyPhone() {
+      const phone = "081-3313135";
+      const btn = document.getElementById("copy-phone-btn");
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(phone).then(() => {
+          btn.textContent = "คัดลอกเบอร์แล้ว ✓";
+          btn.classList.add("copied");
+          setTimeout(() => {
+            btn.textContent = "คัดลอกเบอร์โทร";
+            btn.classList.remove("copied");
+          }, 2000);
+        }).catch(() => {});
+      }
+    }
+  </script>
+  <script id="app-data" type="application/json">{"logo": "data:image/png;base64,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"}</script>
+</body>
+</html>
